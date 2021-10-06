@@ -1,10 +1,8 @@
 /*
   Please note this CSS is currently in   prototype form. We'll implement a cleaned up version in Web Starter Kit.
 */
-
 .paper-snackbar {
-  transition-property: opacity, bottom, left, right, width, margin,
-    border-radius;
+  transition-property: opacity, bottom, left, right, width, margin, border-radius;
   transition-duration: 0.5s;
   transition-timing-function: ease;
   /*font-family: RobotoDraft;*/
@@ -22,7 +20,6 @@
   bottom: 0px;
   opacity: 0;
 }
-
 @media (min-width: 640px) {
   .paper-snackbar {
     /*
@@ -35,7 +32,6 @@
       Action button: Roboto Medium 14 sp, all-caps text
       Default background fill: #323232 100%
     */
-
     min-width: 288px;
     max-width: 568px;
     display: inline-flex;
@@ -44,7 +40,6 @@
     bottom: -100px;
   }
 }
-
 @media (max-width: 640px) {
   .paper-snackbar {
     /*
@@ -59,7 +54,6 @@
     right: 0px;
   }
 }
-
 .paper-snackbar .action {
   background: inherit;
   display: inline-block;
@@ -72,52 +66,24 @@
   min-width: min-content;
   outline: 0px;
 }
-
 /* Everything from here down is actually just for the demo - the material buttons and card, and various other pieces of styling */
-
 /* Variables */
-
-@blue: #4285f4;
-@white: #fff;
-@black: #000;
-@gray: #ccc;
-@button-width: 160px;
-@brand-gray:#3681e6;
-@top: 1000;
-
 /* Buttons */
 .paper-button {
   position: relative;
   padding: 4px 0;
   margin: 1em;
-  width: @button-width;
+  width: 160px;
   overflow: hidden;
   user-select: none;
-  color: @black;
+  color: #000;
   text-transform: uppercase;
   border-radius: 3px;
-  outline-color: @brand-gray;
-
-  &:hover {
-    cursor: pointer;
-  }
-
-  // we don't leverage ripple
-  // .ripple {
-  //     position: absolute;
-  //     width: @button-width * 2;
-  //     height: @button-width * 2;
-  //     //background-color: rgba(@gray, 0.5);
-  //     left: 0;
-  //     top: 0;
-  //     border-radius: 50%;
-  //     margin-left: - @button-width;
-  //     margin-top: - @button-width;
-  //     transform: scaleX(0) scaleY(0);
-  //     z-index: 9000;
-  // }
+  outline-color: #3681e6;
 }
-
+.paper-button:hover {
+  cursor: pointer;
+}
 .paper-button button,
 .paper-button input[type="submit"] {
   background: inherit;
@@ -127,102 +93,72 @@
   height: 100%;
   /*font-family: 'Roboto';*/
   font-size: 1em;
-  color: @black;
+  color: #000;
   text-transform: uppercase;
 }
-
 .paper-button.colored,
 .paper-button.colored button {
-  color: @blue;
+  color: #4285f4;
 }
-
-// .paper-button .ripple {
-//   background-color: rgba(@gray, 0.5);
-// }
-
-// .paper-button.raised-button.colored .ripple {
-//   background-color: rgba(@white, 0.5);
-// }
-
-// .paper-button.raised-button .ripple {
-//   background-color: rgba(@gray, 0.5);
-// }
-
 .paper-button.raised-button.colored {
-  background-color: @blue;
+  background-color: #4285f4;
 }
-
 .paper-button .raised-button {
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 }
-
 .paper-button.raised-button.colored {
   background: #4285f4;
   color: #fff;
 }
-
 .paper-button[disabled] {
   background-color: #eaeaea !important;
   color: #a8a8a8 !important;
   cursor: auto;
 }
-
 .paper-button:hover {
   background-color: #eaeaea;
 }
 .paper-button.raised-button.colored:hover {
   background-color: #3367d6;
 }
-
 button.paper-button {
   border: 0;
   /*font-family: RobotoDraft, 'Helvetica Neue', Helvetica, Arial;*/
   font-size: 1em;
   line-height: 25px;
-  background-color: @white;
+  background-color: #fff;
 }
-
 .paper-button input[type="submit"] {
-  outline-color: @brand-gray;
+  outline-color: #3681e6;
 }
-
 .paper-button.colored.raised-button input[type="submit"] {
-  color: @white;
+  color: #fff;
 }
-
 /** Shadows **/
 .paper-shadow-animated.paper-shadow {
   transition: box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
-
 .paper-shadow-top-z-1 {
   box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16);
 }
-
 .paper-shadow-bottom-z-1 {
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 }
-
 .paper-shadow-top-z-2 {
   box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-
 .paper-shadow-bottom-z-2 {
   box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);
 }
-
 .paper-shadow-top-z-3 {
   box-shadow: 0 17px 50px 0 rgba(0, 0, 0, 0.19);
 }
-
 .paper-shadow-bottom-z-3 {
   box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24);
 }
-
 .paper-shadow-top-z-4 {
   box-shadow: 0 25px 55px 0 rgba(0, 0, 0, 0.21);
 }
-
 /** Card **/
 .card {
   background: white;
