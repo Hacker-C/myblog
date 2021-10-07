@@ -614,7 +614,7 @@ pre.highlight {
   font-size: 20px;
 }
 .search-page #search-input {
-  font-family: Consolas, "Fira Code", Menlo, Monaco, "Courier New", monospace;
+  font-family: Consolas, "Consolas", Menlo, Monaco, "Courier New", monospace;
   border: none;
   outline: none;
   padding: 0;
@@ -771,7 +771,7 @@ code,
 kbd,
 pre,
 samp {
-  font-family: Consolas, "Fira Code", Menlo, Monaco, "Courier New", monospace;
+  font-family: Consolas, "Consolas", Menlo, Monaco, "Courier New", monospace;
 }
 .postlist-container {
   margin-bottom: 15px;

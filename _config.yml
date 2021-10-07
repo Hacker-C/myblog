@@ -1,7 +1,7 @@
 # Site settings
 title: MurphyChen
 SEOTitle: MurphyChen's Blog
-header-img:  img/home.jpg
+header-img:  img/home2.jpg
 email: mphy@qq.com
 description: ""
 keyword: ""
@@ -50,7 +50,7 @@ plugins: [jekyll-paginate]
 # document: http://jekyllrb.com/docs/configuration/#kramdown
 markdown: kramdown
 kramdown:
-  input: GFM                            # use Github Flavored Markdown !important
+  input: GFM  # use Github Flavored Markdown !important
   syntax_highlighter_opts:
     span:
       line_numbers: false
