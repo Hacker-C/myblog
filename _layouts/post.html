@@ -50,6 +50,23 @@ layout: default
                     {% endif %}
                 </ul>
                 <hr style="visibility: hidden;">
+                <!-- comment -->
+                <script src="https://cdn.jsdelivr.net/gh/Hacker-C/mycdn@master/av-min.js"></script>
+                <script src='https://cdn.jsdelivr.net/gh/Hacker-C/mycdn@master/Valine.min.js'></script>
+                <div id="comment"></div>
+
+                <script>
+                    var valine = new Valine();
+                    valine.init({
+                        el: '#comment',
+                        appId: 'JXGITXMhy6uvm7W1SblT2KTj-gzGzoHsz',
+                        appKey: 's5KOMAKV4ftatCsJ2kzxSV5F',
+                        notify: true,
+                        path: '{{ page.url }}',
+                        placeholder: '在这里写评论——林德熙'
+                    })
+                </script>
+
 
                 {% if site.disqus_username %}
                 <!-- disqus 评论框 start -->
