@@ -1,9 +1,10 @@
 博客迁移计划  
 > 这几天突然想换一个简洁的博客主题，发现了Jekyll。
 
-迁移进度：初步搭建-样式修改-添加评论-转移文章。
+迁移进度：初步搭建-样式修改-添加评论-转移文章-域名部署完成。
 - 框架：Jekyll
-- 预览：https://myblog-gamma-jet.vercel.app
+- 预览1：https://blog.mphy.top
+- 预览2：https://myblog-gamma-jet.vercel.app
 
 搭建环境：
 - OS：WSL
