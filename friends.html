@@ -1,0 +1,64 @@
+---
+layout: page
+title: "Friends"
+description: "「坍缩伤感，抱紧科幻」"
+header-img: "img/home3.jpg"
+multilingual: true
+---
+
+<style>
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  li {
+    list-style: none;
+  }
+
+  .friends {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+
+  .friends li a {
+    display: inline-block;
+  }
+
+  .friends li a {
+    margin-left: 15px;
+  }
+</style>
+
+<ul class="friends">
+</ul>
+
+<script>
+
+  let xhr = new XMLHttpRequest()
+  xhr.open('get', './friends.json ')
+  xhr.send()
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState == 4 && xhr.status === 200) {
+      let result = JSON.parse(xhr.response)
+      // console.log(result)
+      result.forEach(obj => {
+        let li = document.createElement('li')
+        let a = document.createElement('a')
+        a.target = '_blank'
+        a.href = obj.link
+        a.innerHTML = obj.title
+        li.appendChild(a)
+        friends.appendChild(li)
+        // console.log(obj.title, obj.link)
+      });
+      // 
+
+
+    }
+  }
+  let friends = document.querySelector('.friends')
+
+</script>
