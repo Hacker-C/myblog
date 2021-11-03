@@ -27,6 +27,7 @@ tags:
 2. GitHub 学生开发教育包
   - 可白嫖时间：一年或四年
   - 产品内容：Github Pro 版本，Namecheap 一年的免费 .me 域名和 ssl 证书等。
+  - 官方所有产品介绍：<a href="https://education.github.com/pack#offers" target="_blank">https://education.github.com/pack#offers</a>
   - 官网：<a href="https://github.com" target="_blank">https://github.com</a>
   - 教育优惠申请入口：<a href="https://education.github.com/discount_requests/student_application" target="_blank">https://education.github.com/discount_requests/student_application</a>
 
