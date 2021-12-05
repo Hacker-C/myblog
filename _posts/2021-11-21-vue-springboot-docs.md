@@ -180,7 +180,13 @@ public class UserController {
 void updateAuthorValues(Author author);
 ```
 
+### 1.8 mybatis 使用模糊查询传参必须使用 `${}`
 
+```java
+// 分页查询 + 模糊查询
+@Select("select * from user where id like '%${key}%' limit #{offset},#{pageSize}")
+List<User> findByPage(@Param("offset") Integer offset, @Param("pageSize") Integer pageSize, @Param("key") String key);
+```
 
 ## 2. Vue.js
 
