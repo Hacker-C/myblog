@@ -238,5 +238,33 @@ module.exports = {
     }
   }
 }
-
 ```
+
+### 2.3 Vue 报错汇总
+
+1. `[Violation] Added non-passive event...`  
+报错信息：
+```
+[Violation] Added non-passive event listener to a scroll-blocking 'touchmove' event. Consider marking event handler as 'passive' to make the page more responsive. 
+```
+报错原因：  
+  Chrome51 版本以后，Chrome 增加了新的事件捕获机制－Passive Event Listeners；
+Passive Event Listeners：就是告诉前页面内的事件监听器内部是否会调用preventDefault函数来阻止事件的默认行为，以便浏览器根据这个信息更好地做出决策来优化页面性能。当属性passive的值为true的时候，代表该监听器内部不会调用preventDefault函数来阻止默认滑动行为，Chrome浏览器称这类型的监听器为被动（passive）监听器。目前Chrome主要利用该特性来优化页面的滑动性能，所以Passive Event Listeners特性当前仅支持mousewheel/touch相关事件。  
+解决方案：  
+- 安装依赖：`npm i default-passive-events -S`
+- 在 main.js 中引入依赖：`import 'default-passive-events'`
+
+2. 连续点击同一路由报错  
+  在做菜单跳转功能时，发现如果多次点击同一个项，发生重复跳转就会报错。
+  ```
+  Avoided redundant navigation to current location...
+  ```
+  解决方案：  
+  在router文件夹下的index.js中添加以下代码（根据你路由跳转的实际方式修改 push/replace）：
+  ```js
+  const originalReplace = VueRouter.prototype.replace
+  
+  VueRouter.prototype.replace = function replace(location) {
+    return originalReplace.call(this, location).catch(err => err)
+  }
+  ```
