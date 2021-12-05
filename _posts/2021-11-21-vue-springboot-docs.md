@@ -184,7 +184,7 @@ void updateAuthorValues(Author author);
 
 ```java
 // 分页查询 + 模糊查询
-@Select("select * from user where id like '%${key}%' limit #{offset},#{pageSize}")
+@Select("select * from user where concat(id,' ', username,' ', nickname,' ', age,' ', sex,' ', address) like '%${key}%' limit #{offset},#{pageSize}")
 List<User> findByPage(@Param("offset") Integer offset, @Param("pageSize") Integer pageSize, @Param("key") String key);
 ```
 
