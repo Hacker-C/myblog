@@ -191,8 +191,16 @@ List<User> findByPage(@Param("offset") Integer offset, @Param("pageSize") Intege
 
 ### 1.10 SpringBoot 设置日期实体格式
 
+局部设置（Entity）
 ```
 @JsonFormat(pattern = "yyyy-MM-dd" , timezone = "GHT+8")
+```
+
+全局设置（application.yml）
+```yml
+spring:
+  jackson:
+    date-format: yyyy-MM-dd
 ```
 
 ## 2. Vue.js
