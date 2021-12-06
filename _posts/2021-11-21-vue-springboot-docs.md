@@ -180,12 +180,19 @@ public class UserController {
 void updateAuthorValues(Author author);
 ```
 
-### 1.8 mybatis 使用模糊查询传参必须使用 `${}`
+### 1.9 mybatis 使用模糊查询传参必须使用 `${}`
 
 ```java
 // 分页查询 + 模糊查询
 @Select("select * from user where concat(id,' ', username,' ', nickname,' ', age,' ', sex,' ', address) like '%${key}%' limit #{offset},#{pageSize}")
 List<User> findByPage(@Param("offset") Integer offset, @Param("pageSize") Integer pageSize, @Param("key") String key);
+```
+
+
+### 1.10 SpringBoot 设置日期实体格式
+
+```
+@JsonFormat(pattern = "yyyy-MM-dd" , timezone = "GHT+8")
 ```
 
 ## 2. Vue.js
@@ -202,6 +209,7 @@ Vue.js 项目中使用 Axios 步骤：
   import axios from 'axios'
   Vue.prototype.$axios = axios
   ```
+
   在组件中使用：
   ```js
   methods: {
@@ -246,9 +254,65 @@ module.exports = {
 }
 ```
 
-### 2.3 Vue 报错汇总
+### 2.3 Vue项目中使用封装的 request.js
 
-1. `[Violation] Added non-passive event...`  
+```js
+import axios from 'axios'
+import router from '../router/index'
+
+const request = axios.create({
+  baseURL: '/api',
+  timeout: 5000
+})
+
+// request 拦截器
+// 可以自请求发送前对请求做一些处理
+// 比如统一加token，对请求参数统一加密
+request.interceptors.request.use(config => {
+  config.headers['Content-Type'] = 'application/json;charset=utf-8';
+
+  // config.headers['token'] = user.token;  // 设置请求头
+
+  // 取出sessionStorage中的信息
+  const userJson = sessionStorage.getItem('user')
+  // 若 sessionStorage 中没有 user，则强制返回登录页面
+  // 在登录页面创建（created）时，要清除  sessionStorage
+  if (!userJson) {
+    router.push('/login')
+  }
+
+  return config
+}, error => {
+  return Promise.reject(error)
+});
+
+// response 拦截器
+// 可以在接口响应后统一处理结果
+request.interceptors.response.use(
+  response => {
+    let res = response.data;
+    // 如果是返回的文件
+    if (response.config.responseType === 'blob') {
+      return res
+    }
+    // 兼容服务端返回的字符串数据
+    if (typeof res === 'string') {
+      res = res ? JSON.parse(res) : res
+    }
+    return res;
+  },
+  error => {
+    console.log('err' + error) // for debug
+    return Promise.reject(error)
+  }
+)
+
+export default request
+```
+
+### 2.4 Vue 报错汇总
+
+1.`[Violation] Added non-passive event...`  
 报错信息：
 ```
 [Violation] Added non-passive event listener to a scroll-blocking 'touchmove' event. Consider marking event handler as 'passive' to make the page more responsive. 
@@ -260,17 +324,18 @@ Passive Event Listeners：就是告诉前页面内的事件监听器内部是否
 - 安装依赖：`npm i default-passive-events -S`
 - 在 main.js 中引入依赖：`import 'default-passive-events'`
 
-2. 连续点击同一路由报错  
-  在做菜单跳转功能时，发现如果多次点击同一个项，发生重复跳转就会报错。
-  ```
-  Avoided redundant navigation to current location...
-  ```
-  解决方案：  
-  在router文件夹下的index.js中添加以下代码（根据你路由跳转的实际方式修改 push/replace）：
-  ```js
-  const originalReplace = VueRouter.prototype.replace
-  
-  VueRouter.prototype.replace = function replace(location) {
-    return originalReplace.call(this, location).catch(err => err)
-  }
-  ```
+2.连续点击同一路由报错   
+在做菜单跳转功能时，发现如果多次点击同一个项，发生重复跳转就会报错。
+```
+Avoided redundant navigation to current location...
+```
+
+解决方案：  
+在router文件夹下的index.js中添加以下代码（根据你路由跳转的实际方式修改 push/replace）：  
+```js
+const originalReplace = VueRouter.prototype.replace
+
+VueRouter.prototype.replace = function replace(location) {
+  return originalReplace.call(this, location).catch(err => err)
+}
+```
